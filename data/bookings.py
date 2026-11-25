@@ -1,6 +1,13 @@
 import uuid
 
+from dataclasses import dataclass
 
+@dataclass
+class Booking:
+    id: int
+    data: dict
+
+    
 def valid_booking(**overrides: object) -> dict:
     """Returns valid booking data. Override any field for a specific test."""
     data = {
