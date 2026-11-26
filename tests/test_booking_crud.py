@@ -1,6 +1,7 @@
 import pytest
 from data.bookings import valid_booking
 
+@pytest.mark.smoke
 def test_create_booking_returns_id_and_sent_data(create_booking):
     data = valid_booking()
     response = create_booking(data)

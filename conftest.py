@@ -20,6 +20,8 @@ def auth_token(client: BookingClient):
 
 @pytest.fixture
 def create_booking(client: BookingClient, auth_token: str):
+    """Fixture to create a booking and ensure cleanup after the test.
+    Yields a function that can be called to create a booking with given data."""
     created_ids = []
 
     def _create(data: dict) -> requests.Response:
@@ -35,6 +37,7 @@ def create_booking(client: BookingClient, auth_token: str):
 
 @pytest.fixture
 def booking(create_booking):
+    """Fixture to create a booking and return its ID and data."""
     data = valid_booking()
     response = create_booking(data)
     assert response.status_code == 200
